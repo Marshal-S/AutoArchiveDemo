@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AutoArchiveDemo.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>5D46DDF900D38CAE377767881A8BFCAA1CF85C70</string>
+				<key>dateExpires</key>
+				<string>2022/9/14</string>
+				<key>type</key>
+				<string>Apple Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>4BGCVPB2J7.com.Marshal.commonTestAPP</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>4BGCVPB2J7</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>4BGCVPB2J7.com.Marshal.commonTestAPP</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>AutoArchiveDemo.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>5fb1e963-a773-48e3-9a40-780328db6b65</string>
+				<key>name</key>
+				<string>commonTestAPP_hoc</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>4BGCVPB2J7</string>
+				<key>name</key>
+				<string></string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
