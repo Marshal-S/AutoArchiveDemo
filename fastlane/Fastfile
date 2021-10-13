@@ -58,7 +58,7 @@ platform :ios do
     desc "上线蒲公英"
     lane :adhoc_pgy do |options|
 
-        increment_build_number(Time.new.strftime("%Y%m%d%H%M"))
+        increment_build_number(xcodeproj: ENV['Xcodeproj'])
 
         currentTime = Time.new.strftime("%Y-%m-%d-%H-%M-")
 
@@ -74,7 +74,7 @@ platform :ios do
             export_method:"ad-hoc")
 
         pgyer(api_key:'xx2ab6a5efc2b7d8616356xx',
-        user_key:'xx53c46ae83961ed9478bdxx')
+      	 	user_key:'xx53c46ae83961ed9478bdxx')
 
         # pgyer(api_key: ENV['api_key'],
         # user_key: ENV['user_Key'])
