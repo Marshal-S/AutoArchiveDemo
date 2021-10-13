@@ -1,0 +1,107 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+    before_all do
+        # ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "tcha-fzfe-jcmd-tken"
+    end
+    
+
+    desc "上线 App Store"
+    lane :release do | options |
+        increment_build_number(xcodeproj: ENV['Xcodeproj'])
+
+        build_app(
+            workspace: ENV['Workspace'],
+            scheme: ENV['Scheme'],
+            clean: true,
+            silent: true,
+            output_directory: './fastlane/appstore/',
+            output_name:"#{currentTime}#{ENV['ipa']}")
+
+        upload_to_app_store(force: true)
+      end
+
+
+    desc "上线testflight"
+    lane :release_to_testFlight do | options |
+
+        increment_build_number(xcodeproj: ENV['Xcodeproj'])
+
+        build_app(
+            workspace: ENV['Workspace'],
+            scheme: ENV['Scheme'],
+            clean: true,
+            silent: true,
+            output_directory: './fastlane/testflight/',
+            output_name:"#{currentTime}#{ENV['ipa']}")
+
+        upload_to_testflight
+    end
+
+
+    desc "上线蒲公英"
+    lane :adhoc_pgy do |options|
+
+        increment_build_number(Time.new.strftime("%Y%m%d%H%M"))
+
+        currentTime = Time.new.strftime("%Y-%m-%d-%H-%M-")
+
+        logDirectory = "#{currentTime}"
+
+        build_app(
+            workspace: ENV['Workspace'],
+            scheme: ENV['Scheme'],
+            silent: true,
+            clean: true,
+            output_directory: './fastlane/pgy/',
+            output_name:"#{currentTime}#{ENV['ipa']}",
+            export_method:"ad-hoc")
+
+        pgyer(api_key:'xx2ab6a5efc2b7d8616356xx',
+        user_key:'xx53c46ae83961ed9478bdxx')
+
+        # pgyer(api_key: ENV['api_key'],
+        # user_key: ENV['user_Key'])
+    end
+
+
+    desc "上线firim"
+    lane :adhoc_firim do |options|
+
+        increment_build_number(xcodeproj:ENV['Xcodeproj'])
+
+        currentTime = Time.new.strftime("%Y-%m-%d-%H-%M-")
+
+        logDirectory = "#{currentTime}"
+
+        build_app(
+            workspace: ENV['Workspace'],
+            scheme: ENV['Scheme'],
+            silent: true,
+            clean: true,
+            output_directory: './fastlane/firim/',
+            output_name: "#{currentTime}#{ENV['ipa']}",
+            export_method:"ad-hoc")
+
+        firim(firim_api_token:'xxx23412341234xxx')
+
+        # firim(firim_api_token:ENV['firim_api_token'])
+  end	
+
+end

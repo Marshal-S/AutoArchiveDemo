@@ -160,7 +160,8 @@ else
         curl -F "file=@${exportIpaPath}/${scheme_name}.ipa" -F "uKey=${MY_PGY_UK}" -F "_api_key=${MY_PGY_API_K}" https://qiniu-storage.pgyer.com/apiv1/app/upload
     fi
 fi
-echo "\n\n"
-echo "已运行完毕>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+echo ''
+echo ''
+echo '已运行完毕>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
 exit 0
 
